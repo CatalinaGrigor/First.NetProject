@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ExamIntraCatalina.Models.Activite>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="List">Voir les resultats des votes</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+           @* <th>
+                @Html.DisplayNameFor(model => model.Duree) 
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prix)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vote)
+            </th>
+            *@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Duree)h
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prix)$
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vote)
+            </td>
+                *@
+            <td>
+                @Html.ActionLink("Voter", "Voter", new { id=item.Nom }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Nom }) |
+               @* @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
